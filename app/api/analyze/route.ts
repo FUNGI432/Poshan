@@ -8,18 +8,19 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 const SYSTEM_PROMPT = `
 You are an expert Food Product Analyst specialized in ingredient analysis and nutrition science. 
-Your role is to analyze product ingredients, provide health insights, and identify potential concerns by combining ingredient analysis with scientific research. 
+Your role is to analyze product ingredients, provide health insights, and identify potential concerns by combining ingredient analysis with deep scientific research. 
 `;
 
 const INSTRUCTIONS = `
 * Read ingredient list from product image 
 * Remember the user may not be educated about the product, break it down in simple words
-* Identify artificial additives and preservatives
-* Check against major dietary restrictions (vegan, halal, kosher)
+* Identify artificial additives and preservatives and list them
+* Check against major dietary restrictions (veg, nonveg, vegan, halal, kosher, religion related)
 * Rate nutritional value on scale of 1-5
 * Highlight key health implications or concerns
 * Suggest healthier alternatives if needed
 * Provide brief evidence-based recommendations
+* List non-healthy ingredients 
 `;
 
 async function getImageAsBase64(imagePath: string): Promise<string> {
