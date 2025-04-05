@@ -27,14 +27,17 @@ interface SocialNetworkProps {
 export const TeamSection = () => {
   const teamList: TeamProps[] = [
     {
-      imageUrl: "/Ammaarlinkedin.jpg",
-      firstName: "Ammaar",
-      lastName: "Khan",
-      positions: ["Student at DJSCE, Mumbai", "AI/ML Developer"],
+      imageUrl: "/aman-war.jpg",
+      firstName: "Aman",
+      lastName: "Gangwar",
+      positions: [
+        "Student at Bennet University, Greater Noida",
+        "UI/UX Developer",
+      ],
       socialNetworks: [
         {
           name: "LinkedIn",
-          url: "https://www.linkedin.com/in/ammaar-khan-3420671b6/",
+          url: "https://www.linkedin.com/in/aman-gangwar-300822292/",
         },
         {
           name: "Github",
@@ -43,23 +46,87 @@ export const TeamSection = () => {
       ],
     },
     {
-      imageUrl: "/aditya.jpg",
-      firstName: "Aditya",
-      lastName: "Deshpande",
-      positions: ["Student at DJSCE, Mumbai", "AI/ML Developer"],
+      imageUrl:
+        "https://media.licdn.com/dms/image/v2/D4D03AQFziQovnkV2Cg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725908329526?e=1749081600&v=beta&t=HrNPH_K-uq8oIyNE4W7T1mc6TlS1r4C7VPauVZJu1rI",
+      firstName: "Divyansh",
+      lastName: "Vishwakarma",
+      positions: [
+        "Student at Bennet University, Greater Noida",
+        "Web Developer",
+      ],
       socialNetworks: [
         {
           name: "LinkedIn",
-          url: "https://www.linkedin.com/in",
+          url: "https://www.linkedin.com/in/deevee47",
         },
         {
           name: "Github",
-          url: "https://github.com/AdiD-code",
+          url: "https://github.com/deevee47",
+        },
+      ],
+    },
+    {
+      imageUrl:
+        "https://media.licdn.com/dms/image/v2/D4D03AQF0exv-N38iAg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729655136649?e=1749081600&v=beta&t=RjqdCFPXpkZljlK_bDW8unS0Mbk8WXpm3vLUTMFoliM",
+      firstName: "Shantanu",
+      lastName: "Kumar  ",
+      positions: [
+        "Student at Bennet University, Greater Noida",
+        "Web Developer",
+      ],
+      socialNetworks: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/shantanu-kumar-s34/",
+        },
+        {
+          name: "Github",
+          url: "https://github.com/shantanukumar22",
+        },
+      ],
+    },
+    {
+      imageUrl:
+      "https://media.licdn.com/dms/image/v2/D4E03AQEBCNOtnVpkpg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726265779939?e=1749081600&v=beta&t=Fd5URlURcoQmuiywNh7rPfEHHNT4N9m1jmapiIC4DFo",
+      firstName: "Kartik",
+      lastName: "Gupta",
+      positions: [
+        "Student at Bennet University, Greater Noida",
+        "Web Developer",
+      ],
+      socialNetworks: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/kartik-gupta-038473322/",
+        },
+        {
+          name: "Github",
+          url: "https://github.com/deevee47",
+        },
+      ],
+    },
+    {
+      imageUrl:
+        "https://media.licdn.com/dms/image/v2/D5603AQFvAvI9SRKeBA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1712674568368?e=1749081600&v=beta&t=EGKbVEHvmXOF7fqp5CCWG-YhrofxYJ8MREJ1kz1MZUw",
+      firstName: "Akshat",
+      lastName: "Khemka",
+      positions: [
+        "Student at Bennet University, Greater Noida",
+        "Web Developer",
+      ],
+      socialNetworks: [
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/khemka-akshat/",
+        },
+        {
+          name: "Github",
+          url: "https://github.com/KhemkaAkshat",
         },
       ],
     },
   ];
-
+  
   const socialIcon = (socialName: string) => {
     switch (socialName) {
       case "LinkedIn":
