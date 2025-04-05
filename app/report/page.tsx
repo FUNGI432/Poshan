@@ -1,73 +1,3 @@
-// 'use client';
-
-// import { Button } from "@/components/ui/button";
-// import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-// import { Settings, FileText } from "lucide-react";
-// import { useState, useEffect } from "react";
-// import ReportComponent from "@/components/ReportComponent";
-// import { useToast } from "@/hooks/use-toast";
-// import ChatComponent from "@/components/chatcomponent";
-
-// const Home = () => {
-//   const { toast } = useToast();
-//   const [reportData, setReportData] = useState<string | null>(null);
-
-//   useEffect(() => {
-//     console.log("Updated Report Data:", reportData);
-//   }, [reportData]);
-
-//   const onReportConfirmation = (data: string) => {
-//     if (!data) {
-//       toast({ variant: "destructive", description: "Report data is empty!" });
-//       return;
-//     }
-
-//     setReportData(data);
-//     toast({ title: "Report Confirmed", description: "Medical report successfully updated." });
-//   };
-
-//   return (
-//     <div className="flex h-screen bg-background">
-//       {/* Sidebar */}
-//       <aside className="hidden md:flex w-[350px] flex-col border-r bg-muted/10">
-//         <div className="p-4 border-b">
-//           <h2 className="text-lg font-semibold flex items-center gap-2">
-//             <FileText className="w-5 h-5" />
-//             Medical Reports
-//           </h2>
-//         </div>
-//         <div className="flex-1 overflow-auto p-4">
-//           <ReportComponent onReportConfirmation={onReportConfirmation} />
-//         </div>
-//       </aside>
-
-//       {/* Main Content */}
-//       <div className="flex-1 flex flex-col">
-//         <header className="h-14 border-b flex items-center justify-between px-4 bg-background">
-//           <Drawer>
-//             <DrawerTrigger asChild>
-//               <Button variant="ghost" size="icon" className="md:hidden">
-//                 <Settings className="w-5 h-5" />
-//               </Button>
-//             </DrawerTrigger>
-//             <DrawerContent>
-//               <div className="p-4 max-h-[80vh] overflow-auto">
-//                 <ReportComponent onReportConfirmation={onReportConfirmation} />
-//               </div>
-//             </DrawerContent>
-//           </Drawer>
-//         </header>
-
-//         <main className="flex-1 p-4">
-//           <ChatComponent reportData={reportData} />
-//         </main>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -131,26 +61,6 @@ const Home = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Mock data for quick stats
-  const quickStats = [
-    {
-      title: "Total Reports",
-      value: "12",
-      icon: <FileText className="h-5 w-5 text-blue-500" />,
-    },
-    {
-      title: "Active Patients",
-      value: "3",
-      icon: <User className="h-5 w-5 text-emerald-500" />,
-    },
-    {
-      title: "Pending Analysis",
-      value: "2",
-      icon: <PieChart className="h-5 w-5 text-amber-500" />,
-    },
-  ];
-
-  // Mock data for recent activities
   const recentActivities = [
     {
       id: 1,
@@ -194,7 +104,7 @@ const Home = () => {
               <Input
                 type="search"
                 placeholder="Search medical records, reports..."
-                className="w-full pl-9 bg-muted/30 focus-visible:ring-1"
+                className="w-full pl-10 pr-4 py-2 bg-muted/30 focus-visible:ring-1 rounded-md"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -221,7 +131,7 @@ const Home = () => {
           {/* Reports Panel */}
           <div className="hidden lg:flex flex-col w-[350px] border-r bg-white dark:bg-slate-800 overflow-hidden">
             <div className="p-4 border-b bg-muted/30">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold flex items-center gap-2">
                   <FileText className="w-5 h-5 text-primary" />
                   Medical Reports
@@ -230,12 +140,6 @@ const Home = () => {
                   <span className="text-xs">New Report</span>
                 </Button>
               </div>
-              <Input
-                placeholder="Search reports..."
-                className="bg-background"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
             </div>
 
             <div className="flex-1 overflow-auto">
@@ -251,7 +155,7 @@ const Home = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="lg:hidden mx-4 mt-4 w-full"
+                  className="lg:hidden mx-4 mt-6 mb-2 w-full py-2 text-sm"
                 >
                   <FileText className="w-4 h-4 mr-2" />
                   View Medical Reports
@@ -270,32 +174,13 @@ const Home = () => {
             <div className="flex-1 p-4 md:p-6 overflow-auto">
               <div className="max-w-5xl mx-auto">
                 {/* Page Header */}
-                <div className="mb-6">
+                <div className="mt-2 mb-6">
                   <h1 className="text-2xl font-bold tracking-tight">
                     Patient Analysis
                   </h1>
                   <p className="text-muted-foreground">
                     Review medical reports and get AI-powered insights.
                   </p>
-                </div>
-
-                {/* Quick Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                  {quickStats.map((stat, index) => (
-                    <Card key={index}>
-                      <CardContent className="p-4 flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-medium text-muted-foreground">
-                            {stat.title}
-                          </p>
-                          <p className="text-2xl font-bold">{stat.value}</p>
-                        </div>
-                        <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
-                          {stat.icon}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
                 </div>
 
                 {/* Tabs Container */}
@@ -320,11 +205,11 @@ const Home = () => {
                     <Card className="border bg-card">
                       <CardHeader className="bg-muted/50 py-3">
                         <CardTitle className="text-lg flex items-center gap-2">
-                          <MessageSquare className="h-5 w-5 text-primary" />
+                          <MessageSquare className="h-5 w-5 text-primary p-10" />
                           Medical AI Assistant
                         </CardTitle>
                       </CardHeader>
-                      <CardContent className="p-0">
+                      <CardContent className="p-4 pt-2">
                         <div className="h-[60vh] overflow-hidden">
                           <ChatComponent reportData={reportData} />
                         </div>
@@ -337,7 +222,7 @@ const Home = () => {
                       <CardHeader className="py-4">
                         <CardTitle>Recent Activities</CardTitle>
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="px-4 pb-4">
                         <div className="space-y-4">
                           {recentActivities.map((activity) => (
                             <div

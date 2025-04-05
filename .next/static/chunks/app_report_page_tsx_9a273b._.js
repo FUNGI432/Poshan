@@ -10,7 +10,7 @@
     "static/chunks/node_modules_zod_lib_index_mjs_ee760a._.js",
     "static/chunks/node_modules_@radix-ui_891e04._.js",
     "static/chunks/node_modules_@ai-sdk_2665e7._.js",
-    "static/chunks/node_modules_441803._.js"
+    "static/chunks/node_modules_e44b90._.js"
   ],
   "source": "dynamic"
 });

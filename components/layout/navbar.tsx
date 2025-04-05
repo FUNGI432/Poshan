@@ -2,8 +2,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Info, Book, Bell, User } from "lucide-react";
-
+import {
+  Menu,
+  X,
+  Home,
+  ClipboardList,
+  Utensils,
+  Syringe,
+  User,
+} from "lucide-react";
+import { ToggleTheme } from "./toogle-theme";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -39,25 +47,26 @@ const Navbar = () => {
               <span>Home</span>
             </Link>
             <Link
-              href="/about"
+              href="/report"
               className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
             >
-              <Info className="w-4 h-4" />
-              <span>About</span>
+              <ClipboardList className="w-4 h-4" />
+              <span>Report</span>
             </Link>
+
             <Link
               href="/food"
               className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
             >
-              <Book className="w-4 h-4" />
+              <Utensils className="w-4 h-4" />
               <span>Food Analyzer</span>
             </Link>
             <Link
-              href="/notifications"
+              href="/searchmedicine"
               className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
             >
-              <Bell className="w-4 h-4" />
-              <span>Notifications</span>
+              <Syringe className="w-4 h-4" />
+              <span>Medicine Query</span>
             </Link>
           </nav>
 
@@ -71,6 +80,7 @@ const Navbar = () => {
               <User className="h-4 w-4 text-green-600" />
               <span>Account</span>
             </Button>
+            <ToggleTheme />
           </div>
 
           {/* Mobile Controls */}
