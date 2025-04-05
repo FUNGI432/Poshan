@@ -15,13 +15,15 @@ export const HeroSection = () => {
             <h1 className="dark:text-white">
               Empowering Your Health with
               <span className="text-transparent px-2 bg-gradient-to-r from-[#D247BF] to-primary bg-clip-text">
-                Sehat Saathi
+                Poshan
               </span>
             </h1>
           </div>
 
           <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground dark:text-gray-300">
-            {"Bringing Affordable Diagnostics to Every Corner – Empowering Rural Healthcare with AI-driven Medical Insights"}
+            {
+              "Bringing Affordable Diagnostics to Every Corner – Empowering Rural Healthcare with AI-driven Medical Insights"
+            }
           </p>
 
           <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">

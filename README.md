@@ -1,8 +1,8 @@
-# **Sehat Saathi – AI-Powered Healthcare Companion**
+# **Poshan – AI-Powered Healthcare Companion**
 
 ## **Overview**
 
-**Sehat Saathi** is an AI-driven healthcare platform designed to provide accessible and reliable medical assistance, especially for rural communities. It offers features such as medical report analysis, medication details, and nutrition insights through an intuitive chatbot interface. The platform supports multiple languages, ensuring inclusivity and ease of use.
+**Poshan** is an AI-driven healthcare platform designed to provide accessible and reliable medical assistance, especially for rural communities. It offers features such as medical report analysis, medication details, and nutrition insights through an intuitive chatbot interface. The platform supports multiple languages, ensuring inclusivity and ease of use.
 
 ## **Features**
 
@@ -54,7 +54,7 @@
 
 ## **Usage**
 
-Users can interact with the Sehat Saathi chatbot via the web interface or WhatsApp to:
+Users can interact with the Poshan chatbot via the web interface or WhatsApp to:
 
 - Upload and analyze medical reports.
 - Inquire about medication details.
@@ -72,6 +72,5 @@ Users can interact with the Sehat Saathi chatbot via the web interface or WhatsA
 ![4](https://github.com/user-attachments/assets/44b9505a-bf20-45d4-94fb-624b000c0f46)
 
 ![Capture](https://github.com/user-attachments/assets/6e56109e-876b-4299-a9ff-07439861473b)
-
 
 # SehatVaani

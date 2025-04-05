@@ -8,8 +8,9 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Team Quantum Quest - Sehat Saathi",
-  description: "Landing template from Shadcn",
+  title: "Team Kuposhan - Poshan",
+  description:
+    "Poshan is an AI-driven healthcare platform designed to provide accessible and reliable medical assistance, especially for rural communities. It offers features such as medical report analysis, medication details, and nutrition insights through an intuitive chatbot interface. The platform supports multiple languages, ensuring inclusivity and ease of use.",
 };
 
 export default function RootLayout({
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" suppressHydrationWarning>
-      <body 
+      <body
         className={cn(
           "min-h-screen bg-background antialiased",
           inter.className
@@ -34,9 +35,7 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">
-              <div className="container relative">
-                {children}
-              </div>
+              <div className="container relative">{children}</div>
             </main>
           </div>
         </ThemeProvider>

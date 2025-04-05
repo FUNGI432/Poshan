@@ -1,6 +1,13 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Pill, BarChart, Ambulance, HeartPulse, HeartHandshake } from "lucide-react";
+import {
+  FileText,
+  Pill,
+  BarChart,
+  Ambulance,
+  HeartPulse,
+  HeartHandshake,
+} from "lucide-react";
 import React from "react";
 
 interface FeaturesProps {
@@ -53,16 +60,21 @@ export const FeaturesSection: React.FC = () => {
     <section className="container mx-auto px-6 sm:px-12 lg:px-24 py-24">
       <div className="text-center">
         <h3 className="text-primary font-medium">Features</h3>
-        <h1 className="text-4xl font-bold">What Makes Sehat Saathi Different</h1>
+        <h1 className="text-4xl font-bold">What Makes Poshan Different</h1>
         <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">
-        Sehat Saathi is an AI-powered medical chatbot designed for low-resource settings, offering multilingual support, instant medical advice, and report analysis to bridge healthcare gaps for rural communities.
+          Poshan is an AI-powered medical chatbot designed for low-resource
+          settings, offering multilingual support, instant medical advice, and
+          report analysis to bridge healthcare gaps for rural communities.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
         {featureList.map(({ icon, title, description }) => {
           return (
-            <Card key={title} className="border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+            <Card
+              key={title}
+              className="border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+            >
               <CardHeader className="space-y-4">
                 <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center">
                   {icon}
