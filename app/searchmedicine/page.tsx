@@ -244,7 +244,7 @@ export default function Home() {
             <div className="bg-gradient-to-r text-green-600 dark:text-green-400 p-1">
               <CardHeader className="bg-white dark:bg-slate-800 pt-5">
                 <CardTitle className="text-xl flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  <MessageCircle className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   Medicine Information
                 </CardTitle>
                 <CardDescription>
