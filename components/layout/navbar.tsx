@@ -1,134 +1,132 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
-import React from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-import { Separator } from "../ui/separator";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "../ui/navigation-menu";
-import { Button } from "../ui/button";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ToggleTheme } from "./toogle-theme";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Home, Info, Book, Bell, User } from "lucide-react";
 
-interface RouteProps {
-  href: string;
-  label: string;
-}
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-const routeList: RouteProps[] = [
-  {
-    href: "/food",
-    label: "Analyze Food Products",
-  },
-  {
-    href: "/report",
-    label: "Analyze Medical Report",
-  },
-  {
-    href: "/searchmedicine",
-    label: "Medicine GPT",
-  },
-  {
-    href: "/assistant",
-    label: "MedBuddy",
-  },
-];
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-export const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-      <Link href="/" className="font-bold text-lg flex items-center">
-        <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-        Poshan
-      </Link>
-      {/* <!-- Mobile --> */}
-      <div className="flex items-center lg:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Menu
-              onClick={() => setIsOpen(!isOpen)}
-              className="cursor-pointer lg:hidden"
-            />
-          </SheetTrigger>
-
-          <SheetContent
-            side="left"
-            className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
-          >
-            <div>
-              <SheetHeader className="mb-4 ml-4">
-                <SheetTitle className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-                    Poshan
-                  </Link>
-                </SheetTitle>
-              </SheetHeader>
-
-              <div className="flex flex-col gap-2">
-                {routeList.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    onClick={() => setIsOpen(false)}
-                    asChild
-                    variant="ghost"
-                    className="justify-start text-base"
-                  >
-                    <Link href={href}>{label}</Link>
-                  </Button>
-                ))}
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo & Brand */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="bg-primary rounded-md p-1.5">
+                <span className="text-primary-foreground font-bold text-xl">
+                  P
+                </span>
               </div>
-            </div>
-
-            <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-              <Separator className="mb-2" />
-
-              <ToggleTheme />
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* <!-- Desktop --> */}
-      <div className="hidden lg:flex">
-        {routeList.map(({ href, label }) => (
-          <Button key={href} asChild variant="ghost" className="text-base px-2">
-            <Link href={href}>{label}</Link>
-          </Button>
-        ))}
-
-        <div className="flex items-center ml-4">
-          <ToggleTheme />
-
-          <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
-            <Link
-              aria-label="View on GitHub"
-              href="https://github.com/ammaarKhan13/SehatSaathi"
-              target="_blank"
-            >
-              <Github className="size-5" />
+              <span className="font-bold text-xl hidden sm:inline-block">
+                POSHAN
+              </span>
             </Link>
-          </Button>
-          <Button
-            asChild
-            size="sm"
-            variant="ghost"
-            aria-label="View on GitHub"
-          ></Button>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              href="/"
+              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+            >
+              <Home className="w-4 h-4" />
+              <span>Home</span>
+            </Link>
+            <Link
+              href="/about"
+              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+            >
+              <Info className="w-4 h-4" />
+              <span>About</span>
+            </Link>
+            <Link
+              href="/food"
+              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+            >
+              <Book className="w-4 h-4" />
+              <span>Food Analyzer</span>
+            </Link>
+            <Link
+              href="/notifications"
+              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+            >
+              <Bell className="w-4 h-4" />
+              <span>Notifications</span>
+            </Link>
+          </nav>
+
+          {/* Right Section - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-1.5 text-green-600 border-green-600"
+            >
+              <User className="h-4 w-4 text-green-600" />
+              <span>Account</span>
+            </Button>
+          </div>
+
+          {/* Mobile Controls */}
+          <div className="flex md:hidden items-center space-x-2">
+            <Button variant="ghost" size="icon" onClick={toggleMenu}>
+              {isMenuOpen ? (
+                <X className="h-5 w-5 text-green-600" />
+              ) : (
+                <Menu className="h-5 w-5 text-green-600" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden animate-in slide-in-from-top-4 duration-200">
+          <div className="px-2 py-3 space-y-1 sm:px-3 bg-background/95 border-b border-border/40">
+            <Link
+              href="/"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Home className="w-5 h-5" />
+              <span className="font-medium">Home</span>
+            </Link>
+            <Link
+              href="/about"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Info className="w-5 h-5" />
+              <span className="font-medium">About</span>
+            </Link>
+            <Link
+              href="/recipes"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Book className="w-5 h-5" />
+              <span className="font-medium">Recipes</span>
+            </Link>
+            <Link
+              href="/notifications"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Bell className="w-5 h-5" />
+              <span className="font-medium">Notifications</span>
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
+
+export default Navbar;

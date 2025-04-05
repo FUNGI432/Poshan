@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "middleware": {},
+  "sortedMiddleware": [],
+  "functions": {
+    "/api/extractreportgemini/route": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/app/api/extractreportgemini/route_client-reference-manifest.js",
+        "server/edge/chunks/_311b44._.js",
+        "server/edge/chunks/node_modules_@google_generative-ai_dist_index_mjs_de3a5b._.js",
+        "server/edge/chunks/[root of the server]__fe7431._.js",
+        "server/edge/chunks/edge-wrapper_5a2fad.js"
+      ],
+      "name": "/api/extractreportgemini",
+      "page": "/api/extractreportgemini/route",
+      "matchers": [
+        {
+          "regexp": "^/api/extractreportgemini(?:/)?$",
+          "originalSource": "/api/extractreportgemini"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "t4xrq53H56p0JkojJkjxDlFUkQCiqdK4qwxt6m8VlUI=",
+        "__NEXT_PREVIEW_MODE_ID": "fef5b1ed11254e10d40218f78b2b1e5f",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "9e8c06704692167785ea94f7479a4b6c63be0b198a6dd09eaa1d2169bcab99d3",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "0a9026ef7da57857d51fb2f39b19ad76c288cb5c2972250e1933f4bff1add62c"
+      }
+    }
+  }
+}
