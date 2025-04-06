@@ -8,6 +8,8 @@ import {
   Search,
   Menu,
 } from "lucide-react";
+import dheemant from "../../../public/dheemant.png"
+import aman from "../../../public/aman-war.jpg"
 
 const HeroSection = () => {
   return (
@@ -162,10 +164,10 @@ const HeroSection = () => {
                   <div className="flex-shrink-0">
                     <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-green-100">
                       <Image
-                        src="/api/placeholder/56/56"
+                        src={aman}
                         alt="Aarushi profile picture"
-                        width={56}
-                        height={56}
+                        width={90}
+                        height={50}
                         className="object-cover"
                       />
                     </div>
@@ -312,7 +314,7 @@ const HeroSection = () => {
                       <div className="flex-shrink-0">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-green-100">
                           <Image
-                            src="/api/placeholder/48/48"
+                            src={dheemant}
                             alt="Dheemant profile picture"
                             width={48}
                             height={48}

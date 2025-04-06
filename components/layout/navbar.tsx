@@ -12,6 +12,9 @@ import {
   User,
 } from "lucide-react";
 import { ToggleTheme } from "./toogle-theme";
+import Image from "next/image";
+import logo from "../../public/logo.png";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -26,11 +29,7 @@ const Navbar = () => {
           {/* Logo & Brand */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="bg-primary rounded-md p-1.5">
-                <span className="text-primary-foreground font-bold text-xl">
-                  P
-                </span>
-              </div>
+              <Image src={logo} width={20} height={20} />
               <span className="font-bold text-xl hidden sm:inline-block">
                 POSHAN
               </span>
