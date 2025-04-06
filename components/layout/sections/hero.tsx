@@ -115,17 +115,30 @@ const HeroSection = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
-                  Get Started
-                  <ArrowRight
-                    className="ml-2 group-hover:translate-x-1 transition-transform"
-                    size={18}
-                  />
-                </button>
-                <button className="flex items-center justify-center bg-white hover:bg-gray-50 text-green-600 font-medium py-3 px-6 rounded-lg border border-green-200 shadow-lg hover:shadow-xl transition duration-300">
-                  <Phone size={18} className="mr-2" />
-                  Book a Consultation
-                </button>
+                <a
+                  href="/food"
+                  className="text-gray-600 hover:text-green-600 transition duration-300"
+                >
+                  <button className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    Get started
+                    <ArrowRight
+                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                      size={18}
+                    />
+                  </button>
+                </a>
+                <a
+                  href="/report"
+                  className="text-gray-600 hover:text-green-600 transition duration-300"
+                >
+                  <button className="flex items-center justify-center bg-green-100 hover:bg-green-700 text-slate-900 font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    Analyze a report
+                    <ArrowRight
+                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                      size={18}
+                    />
+                  </button>
+                </a>
               </div>
 
               {/* Search Box */}
