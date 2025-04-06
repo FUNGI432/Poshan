@@ -129,7 +129,7 @@ const Navbar = () => {
               className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
               onClick={() => setIsMenuOpen(false)}
             >
-              <Bell className="w-5 h-5" />
+              <div className="w-5 h-5" />
               <span className="font-medium">Notifications</span>
             </Link>
           </div>
