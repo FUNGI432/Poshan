@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-**Poshan** is an AI-driven healthcare platform designed to provide accessible and reliable medical assistance, especially for rural communities. It offers features such as medical report analysis, medication details, and nutrition insights through an intuitive chatbot interface. The platform supports multiple languages, ensuring inclusivity and ease of use.
+**Poshan** is an AI-driven healthcare platform designed to provide accessible and reliable medical assistance, especially for rural communities. It offers features such as medical report analysis, medication details, and nutrition insights through an intuitive chatbot interface. The level of personalization being one of the main usp. The platform supports multiple languages, ensuring inclusivity and ease of use. 
 
 ## **Features**
 
@@ -16,14 +16,14 @@
 
 - **Frontend:** Next.js, TypeScript, Tailwind CSS
 - **Backend:** Node.js, FastAPI
-- **AI & NLP:** OpenBioLLM-70B, LangChain, Hugging Face Transformers, NLTK
+- **AI & ML:** OpenBioLLM-70B, LangChain, NLTK
 - **Data Storage:** Pinecone
-- **APIs & Integrations:** WhatsApp API, REST API, Optical Character Recognition (OCR), Gemini
+- **APIs & Integrations:**REST API, Optical Character Recognition (OCR), Gemini API
 
 
 ## **Usage**
 
-Users can interact with the Poshan chatbot via the web interface or WhatsApp to:
+Users can interact with the Poshan chatbot via the web interface:
 
 - Upload and analyze medical reports.
 - Inquire about medication details.
