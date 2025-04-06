@@ -107,8 +107,7 @@ export const TeamSection = () => {
       ],
     },
     {
-      imageUrl:
-        akshat,
+      imageUrl:"https://media.licdn.com/dms/image/v2/D5603AQFvAvI9SRKeBA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1712674568368?e=1749081600&v=beta&t=EGKbVEHvmXOF7fqp5CCWG-YhrofxYJ8MREJ1kz1MZUw",
       firstName: "Akshat",
       lastName: "Khemka",
       positions: [

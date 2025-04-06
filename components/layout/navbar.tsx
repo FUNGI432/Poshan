@@ -29,7 +29,7 @@ const Navbar = () => {
           {/* Logo & Brand */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src={logo} width={20} height={20} />
+              <Image src={logo} width={20} height={20} alt="Logo"/>
               <span className="font-bold text-xl hidden sm:inline-block">
                 POSHAN
               </span>
