@@ -109,28 +109,28 @@ const Navbar = () => {
               <span className="font-medium">Home</span>
             </Link>
             <Link
-              href="/about"
+              href="/food"
               className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
               onClick={() => setIsMenuOpen(false)}
             >
               <div className="w-5 h-5" />
-              <span className="font-medium">About</span>
+              <span className="font-medium">Food Insights</span>
             </Link>
             <Link
-              href="/recipes"
+              href="/report"
               className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
               onClick={() => setIsMenuOpen(false)}
             >
               <div className="w-5 h-5" />
-              <span className="font-medium">Recipes</span>
+              <span className="font-medium">Medical Reports</span>
             </Link>
             <Link
-              href="/notifications"
+              href="/searchmedicine"
               className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
               onClick={() => setIsMenuOpen(false)}
             >
               <div className="w-5 h-5" />
-              <span className="font-medium">Notifications</span>
+              <span className="font-medium">Medicine Searches</span>
             </Link>
           </div>
         </div>
