@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { Upload, FileText, Loader2, CheckCircle2 } from "lucide-react";
 
 type Props = {
   onReportConfirmation: (data: string) => void;
@@ -11,21 +12,25 @@ type Props = {
 
 const ReportComponent = ({ onReportConfirmation }: Props) => {
   const { toast } = useToast();
-
   const [base64Data, setBase64Data] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [reportData, setReportData] = useState<string>("");
+  const [fileName, setFileName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleReportSelection = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files) return;
+    if (!event.target.files || event.target.files.length === 0) {
+      toast({ variant: "destructive", description: "No file selected!" });
+      return;
+    }
 
     const file = event.target.files[0];
-
     if (!file) {
       toast({ variant: "destructive", description: "No file selected!" });
       return;
     }
+
+    setFileName(file.name);
 
     const validImages = ["image/jpeg", "image/png", "image/webp"];
     const validDocs = ["application/pdf"];
@@ -37,7 +42,7 @@ const ReportComponent = ({ onReportConfirmation }: Props) => {
     const reader = new FileReader();
     reader.onloadend = () => {
       setBase64Data(reader.result as string);
-      console.log("File loaded successfully.");
+      toast({ description: "File loaded successfully!" });
     };
     reader.readAsDataURL(file);
   };
@@ -73,52 +78,90 @@ const ReportComponent = ({ onReportConfirmation }: Props) => {
   }
 
   return (
-    <div className="grid w-full items-start gap-6 p-4">
-      <fieldset className="relative grid gap-6 rounded-lg border p-4">
-        <legend className="text-sm font-medium">Upload Medical Report</legend>
+    <div className="space-y-6">
+      {/* File Upload Section */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <FileText className="w-5 h-5 text-green-600" />
+          <Label className="text-base">Upload Medical Report</Label>
+        </div>
         
-        {isLoading && (
-          <div className="absolute inset-0 bg-card/90 flex items-center justify-center rounded-lg">
-            Extracting report...
-          </div>
+        <div className="space-y-4">
+          <input
+            type="file"
+            ref={fileInputRef}
+            className="hidden"
+            onChange={handleReportSelection}
+            accept=".pdf,.jpg,.jpeg,.png,.webp"
+          />
+          
+          <Button 
+            onClick={() => fileInputRef.current?.click()} 
+            disabled={isLoading}
+            className="w-full gap-2"
+          >
+            <Upload className="w-4 h-4" />
+            {fileName || "Select File"}
+          </Button>
+
+          {fileName && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <FileText className="w-4 h-4" />
+              <span className="truncate">{fileName}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Extract Button */}
+      <Button 
+        onClick={extractDetails} 
+        disabled={isLoading || !base64Data}
+        className="w-full gap-2"
+      >
+        {isLoading ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Extracting...
+          </>
+        ) : (
+          <>
+            <FileText className="w-4 h-4" />
+            Extract Report
+          </>
         )}
+      </Button>
 
-        <input
-          type="file"
-          ref={fileInputRef}
-          className="hidden"
-          onChange={handleReportSelection}
-        />
-        <Button onClick={() => fileInputRef.current?.click()} disabled={isLoading}>
-          Select File
-        </Button>
+      {/* Report Summary Section */}
+      {reportData && (
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-green-600" />
+            <Label className="text-base">Extracted Report Summary</Label>
+          </div>
+          
+          <Textarea
+            value={reportData}
+            placeholder="Extracted summary will appear here..."
+            onChange={(e) => setReportData(e.target.value)}
+            className="min-h-48 resize-none border-0 bg-muted/50 p-4 rounded-lg"
+          />
 
-        <Button onClick={extractDetails} disabled={isLoading || !base64Data}>
-          1. Upload & Extract
-        </Button>
-
-        <Label>Extracted Report Summary</Label>
-        <Textarea
-          value={reportData}
-          placeholder="Extracted summary will appear here..."
-          onChange={(e) => setReportData(e.target.value)}
-          className="min-h-72 resize-none border-0 p-3"
-        />
-
-        <Button
-          variant="destructive"
-          className="bg-[#D90013]"
-          onClick={() => {
-            if (!reportData.trim()) {
-              toast({ variant: "destructive", description: "No extracted data to confirm!" });
-              return;
-            }
-            onReportConfirmation(reportData);
-          }}
-        >
-          2. Confirm Report
-        </Button>
-      </fieldset>
+          <Button
+            onClick={() => {
+              if (!reportData.trim()) {
+                toast({ variant: "destructive", description: "No extracted data to confirm!" });
+                return;
+              }
+              onReportConfirmation(reportData);
+            }}
+            className="w-full gap-2 bg-green-600 hover:bg-green-700"
+          >
+            <CheckCircle2 className="w-4 h-4" />
+            Confirm Report
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

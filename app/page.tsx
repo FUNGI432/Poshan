@@ -1,47 +1,17 @@
-import { FAQSection } from "@/components/layout/sections/faq";
-import { FeaturesSection } from "@/components/layout/sections/features";
-import { FooterSection } from "@/components/layout/sections/footer";
 import HeroSection from "@/components/layout/sections/hero";
-
-import { TeamSection } from "@/components/layout/sections/team";
-import { TestimonialSection } from "@/components/layout/sections/testimonial";
+import FeaturesSection from "@/components/layout/sections/features";
+import FooterSection from "@/components/layout/sections/footer";
 
 export const metadata = {
-  title: "Poshan",
-  description: "Free Shadcn landing page for developers",
-  openGraph: {
-    type: "website",
-    url: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Poshan",
-    description: "Free Shadcn landing page for developers",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Poshan",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Poshan",
-    description: "Free Shadcn landing page for developers",
-    images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
-    ],
-  },
+  title: "Poshan - Your Personal Healthcare Companion",
+  description: "Access reliable medical assistance, analyze reports, and get nutrition insights - all in one place. Designed especially for rural communities.",
 };
 
-export default function Home() { 
+export default function Home() {
   return (
     <>
       <HeroSection />
       <FeaturesSection />
-      <TestimonialSection />
-      <TeamSection />
-      <FAQSection />
       <FooterSection />
     </>
   );

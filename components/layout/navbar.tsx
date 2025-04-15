@@ -1,140 +1,93 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  Menu,
-  X,
-  Home,
   ClipboardList,
-  Utensils,
   Syringe,
-  User,
+  Utensils,
+  Moon,
+  Sun,
 } from "lucide-react";
-import { ToggleTheme } from "./toogle-theme";
 import Image from "next/image";
 import logo from "../../public/logo.png";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo & Brand */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image src={logo} width={20} height={20} alt="Logo"/>
-              <span className="font-bold text-xl hidden sm:inline-block">
-                POSHAN
-              </span>
-            </Link>
+    <>
+      {/* Top Header */}
+      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-lg border-b border-border/40 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex h-14 items-center justify-between">
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center space-x-2">
+                <Image src={logo} width={28} height={28} alt="Logo" className="rounded-full"/>
+                <span className="font-bold text-lg text-green-700 dark:text-green-500">
+                  POSHAN
+                </span>
+              </Link>
+            </div>
+            {mounted && (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={toggleTheme}
+                className="h-9 w-9 hover:bg-green-50 dark:hover:bg-green-900/20"
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </Button>
+            )}
           </div>
+        </div>
+      </header>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
-            >
-              <Home className="w-4 h-4" />
-              <span>Home</span>
-            </Link>
+      {/* Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-t border-border/40 shadow-lg">
+        <div className="container mx-auto px-4">
+          <div className="flex h-16 items-center justify-between">
             <Link
               href="/report"
-              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+              className="flex flex-col items-center justify-center gap-1 w-1/3 text-green-700 dark:text-green-500 hover:text-green-800 dark:hover:text-green-400 transition-colors"
             >
-              <ClipboardList className="w-4 h-4" />
-              <span>Report</span>
+              <ClipboardList className="h-6 w-6" />
+              <span className="text-xs font-medium">Report</span>
             </Link>
 
             <Link
               href="/food"
-              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+              className="flex flex-col items-center justify-center gap-1 w-1/3"
             >
-              <Utensils className="w-4 h-4" />
-              <span>Food Analyzer</span>
+              <div className="bg-green-600 dark:bg-green-500 rounded-full p-3 shadow-lg">
+                <Utensils className="h-6 w-6 text-white" />
+              </div>
+              <span className="text-xs font-medium text-green-700 dark:text-green-500">Nutrition</span>
             </Link>
+
             <Link
               href="/searchmedicine"
-              className="text-green-600 hover:text-green-800 font-medium text-sm flex items-center gap-1.5"
+              className="flex flex-col items-center justify-center gap-1 w-1/3 text-green-700 dark:text-green-500 hover:text-green-800 dark:hover:text-green-400 transition-colors"
             >
-              <Syringe className="w-4 h-4" />
-              <span>Medicine Query</span>
-            </Link>
-          </nav>
-
-          {/* Right Section - Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              size="sm"
-              className="gap-1.5 text-green-600 border-green-600"
-            >
-              <User className="h-4 w-4 text-green-600" />
-              <span>Account</span>
-            </Button>
-            <ToggleTheme />
-          </div>
-
-          {/* Mobile Controls */}
-          <div className="flex md:hidden items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <X className="h-5 w-5 text-green-600" />
-              ) : (
-                <Menu className="h-5 w-5 text-green-600" />
-              )}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden animate-in slide-in-from-top-4 duration-200">
-          <div className="px-2 py-3 space-y-1 sm:px-3 bg-background/95 border-b border-border/40">
-            <Link
-              href="/"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Home className="w-5 h-5" />
-              <span className="font-medium">Home</span>
-            </Link>
-            <Link
-              href="/food"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="w-5 h-5" />
-              <span className="font-medium">Food Insights</span>
-            </Link>
-            <Link
-              href="/report"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="w-5 h-5" />
-              <span className="font-medium">Medical Reports</span>
-            </Link>
-            <Link
-              href="/searchmedicine"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-green-700 hover:bg-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="w-5 h-5" />
-              <span className="font-medium">Medicine Searches</span>
+              <Syringe className="h-6 w-6" />
+              <span className="text-xs font-medium">Medicine</span>
             </Link>
           </div>
         </div>
-      )}
-    </header>
+      </nav>
+    </>
   );
 };
 

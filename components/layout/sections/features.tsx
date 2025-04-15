@@ -1,93 +1,68 @@
-"use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  FileText,
-  Pill,
-  BarChart,
-  Ambulance,
-  HeartPulse,
-  HeartHandshake,
-} from "lucide-react";
-import React from "react";
+import { FileText, Search, Utensils, MessageSquare, Languages, Shield } from "lucide-react";
 
-interface FeaturesProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const featureList: FeaturesProps[] = [
+const features = [
   {
-    icon: <Ambulance className="w-8 h-8 text-primary" />,
-    title: "Low-Resource Compatibility",
-    description:
-      "Works on basic devices and low-bandwidth networks, making it accessible in rural areas.",
+    title: "Medical Report Analysis",
+    description: "Upload and get instant analysis of your medical reports with AI-powered insights.",
+    icon: FileText,
   },
   {
-    icon: <FileText className="w-8 h-8 text-primary" />,
-    title: "Medical Report Analyzer",
-    description:
-      "Scans medical reports via image or text queries, uses RAG with Pinecone for context-rich insights from medical databases, and provides chatbot-based contextual responses.",
+    title: "Medicine Search",
+    description: "Find detailed information about medications, their uses, and side effects.",
+    icon: Search,
   },
   {
-    icon: <Pill className="w-8 h-8 text-primary" />,
-    title: "Medicine Analyzer",
-    description:
-      "Uses FDA and Gemini APIs to analyze medicines, answering user queries on medicine usage, dosage, and purpose, among others.",
+    title: "Nutrition Guide",
+    description: "Get personalized nutrition recommendations and dietary plans.",
+    icon: Utensils,
   },
   {
-    icon: <BarChart className="w-8 h-8 text-primary" />,
-    title: "Food Nutrition Analyzer",
-    description:
-      "Processes text or image-based nutrition labels and extracts insights using the Gemini API to offer detailed nutrition information and clarity.",
+    title: "AI Assistant",
+    description: "24/7 AI-powered healthcare assistant to answer your medical queries.",
+    icon: MessageSquare,
   },
   {
-    icon: <HeartPulse className="w-8 h-8 text-primary" />,
-    title: "MedBuddy",
-    description:
-      "MedBuddy is an AI-powered medical chatbot that provides instant, reliable health advice, and symptom analysis",
+    title: "Multi-language Support",
+    description: "Access healthcare information in multiple regional languages.",
+    icon: Languages,
   },
   {
-    icon: <HeartHandshake className="w-8 h-8 text-primary" />,
-    title: "Community Health Mode",
-    description:
-      "Enables health workers to use the platform for collective diagnostics in underserved areas.",
+    title: "Privacy & Security",
+    description: "Your health data is protected with enterprise-grade security measures.",
+    icon: Shield,
   },
 ];
 
-export const FeaturesSection: React.FC = () => {
+export default function FeaturesSection() {
   return (
-    <section className="container mx-auto px-6 sm:px-12 lg:px-24 py-24">
-      <div className="text-center">
-        <h3 className="text-primary font-medium">Features</h3>
-        <h1 className="text-4xl font-bold">What Makes Poshan Different</h1>
-        <p className="mt-4 text-muted-foreground max-w-3xl mx-auto">
-          Poshan is an AI-powered medical chatbot designed for low-resource
-          settings, offering multilingual support, instant medical advice, and
-          report analysis to bridge healthcare gaps for rural communities.
-        </p>
-      </div>
+    <section className="py-16 md:py-24 bg-muted/50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Comprehensive Healthcare Solutions
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Everything you need for better healthcare management, accessible from anywhere.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-        {featureList.map(({ icon, title, description }) => {
-          return (
-            <Card
-              key={title}
-              className="border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-lg bg-background border shadow-sm hover:shadow-md transition-shadow"
             >
-              <CardHeader className="space-y-4">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center">
-                  {icon}
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <feature.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">{title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">
-                {description}
-              </CardContent>
-            </Card>
-          );
-        })}
+                <h3 className="text-xl font-semibold">{feature.title}</h3>
+              </div>
+              <p className="text-muted-foreground">{feature.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
+} 
